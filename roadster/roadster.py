@@ -32,7 +32,11 @@ def save_route(route, distance_km, speed_kmph):
 
 ### PART 1A ###
 def consumption(v):
-    # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
+    a1 = 546.8
+    a2 = 50.31
+    a3 = 0.2584
+    a4 = 0.008210
+    return a1/v+a2+a3*v+a4*v**2
     raise NotImplementedError('consumption not implemented yet!')
 
 ### PART 1B ###
