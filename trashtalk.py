@@ -1,5 +1,9 @@
+import numpy as np
+
+
 def f(v):
-    m=0
-    for i in [1,2,3,4]:
-        result= result+i*v**m
-        m+=1
+    n = np.array([1,22,3])
+    print(n/3)
+
+
+f(2)
