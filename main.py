@@ -16,7 +16,7 @@ A = np.array([[2, -1], [-4, 8]])
 # Press the green button in the gutter to run the script.
 
 def Gauss():
-
+    print("Start")
     sigma = 0.5
     mu = 0.1
 
@@ -26,6 +26,7 @@ def Gauss():
 
     plt.plot(x, y)
     plt.grid()
+    plt.show()
 
 
 def drucker():

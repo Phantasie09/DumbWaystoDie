@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import time
 import numpy as np
-
+import math
+import matplotlib.pyplot as plt
 
 
 print("---------------------------------------------------------")
@@ -16,7 +17,7 @@ N = int(1e7)
 startTime_list = time.time()
 
 x_list = list(range(N))
-y_list = [sin(2*pi/N*x) for x in x_list]
+y_list = [math.sin(2*math.pi/N*x) for x in x_list]
 
 endTime_list = time.time()
 
