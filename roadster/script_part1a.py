@@ -10,3 +10,7 @@ consumption_Whpkm = roadster.consumption(speed_kmph)
 plt.plot(speed_kmph, consumption_Whpkm)
 plt.xlabel(r'$v$ / km/h')
 plt.ylabel(r'$c$ / Wh/km')
+plt.title('Part 1a: Consumption data')
+plt.savefig(fname = 'plot 1a')
+plt.show()
+

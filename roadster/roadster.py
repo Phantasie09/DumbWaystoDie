@@ -62,6 +62,8 @@ def time_to_destination(x, route, n):
 
 ### PART 2B ###
 def total_consumption(x, route, n):
+    v = velocity(x, route)
+    
     # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
     raise NotImplementedError('total_consumption not implemented yet!')
 
