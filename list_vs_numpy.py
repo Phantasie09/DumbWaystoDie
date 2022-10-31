@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import time
 import numpy as np
-from math import sin, pi
+
+
 
 print("---------------------------------------------------------")
 print("This program compares the execution times of vector computations using lists and NumPy-arrays.")
