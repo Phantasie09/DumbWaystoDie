@@ -6,6 +6,17 @@ from matplotlib.cbook import mplDeprecation
 import warnings
 from math import pi
 
+""" 
+For Simpson
+1,723e-5/1,0719e-16=16=2**p=4
+For Trapez
+P=2
+
+
+
+
+
+"""
 def f(x):
     return np.cos(2*x) + np.sin(x)
 
