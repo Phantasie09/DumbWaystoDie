@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import numpy as np
 import matplotlib as mpl
-mpl.use('TkAgg')
+
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Button, TextBox
 from matplotlib.cbook import mplDeprecation
@@ -52,7 +52,7 @@ def plot_polys(x,ax):
         if i < x.size-1:
             lines.append(ax.plot([x[i+1],x[i+1]],[0,f(x[i+1])], color='blue', ls='--', alpha=0.5, lw=0.5))
             xx = x[i:i+3]
-            yy = f(x[i:i+3])
+            yy = f(x[i:i+3])    
             p = np.linalg.solve(np.vander(xx),yy)
             xtmp = np.linspace(x[i],x[i+2])
             ytmp = p[0]*xtmp*xtmp + p[1]*xtmp + p[2]
