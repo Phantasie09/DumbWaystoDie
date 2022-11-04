@@ -11,9 +11,9 @@ def plot(name):
     plt.xlabel(r'$v$ / km/h')
     plt.ylabel(r'$m$ / km')
     plt.title('Part 1b: Consumption data')
-    #plt.savefig(fname='plot 1b')
+    plt.savefig(fname='plot 1b')
     plt.show()
-    plt.cla()
+    #plt.cla()
 plot("speed_anna.npz")
 
 
