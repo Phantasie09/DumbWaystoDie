@@ -1,31 +1,32 @@
 import numpy as np
 from roadster import *
 import matplotlib.pyplot as plt
+from scipy.integrate import trapezoid
 
 
 def time_to_destination (x , route , n ):
-    pass
+    h = x/n
+    position = np.linspace(0, x, n+1)
+    speed = 1/velocity(position, route)
+    t = trapezoid(speed,position)
+    return h*(np.sum(speed) - (speed[0] + speed[-1])/2)
+  
 
-def Time(name):
-    distance_km, speed_kmph = load_route(f'{name}')
-    position = np.linspace(0, max(distance_km), n)
-    np.trapz()
-    return 1/velocity(position,name)
+def timekonverter(x): #WIth Inspiration of Concept INput in Sec
+    if x // (365.2425243600) < 1: # year
+        if x//(24 * 3600)>1: #day
+            days = x // (24 * 3600)
+            hours = (x % (24 * 3600))/3600
+            return [int(days),"days",int(hours),"hours"]
+        else:
+            hours=x // 3600
+            seconds= x % 3600
+            return[int(hours),"hours",int(seconds),"seconds"]
+    else:
+        days= (x % (365.2425243600))/(243600)
+        years=x // (365.242524*3600)
+        return [int(years),"years",int(days),"days"]
 
-def Graph(name, n = 10000):
-    plt.figure()
-    distance_km, speed_kmph = load_route(f'{name}')
-    position = np.linspace(0, max(distance_km), n)
-    speed=velocity(position, name)
-    plt.plot(position, speed, '-', markersize = 0.1, label = f'interpolation n = {n}')
-    plt.scatter(distance_km, speed_kmph, s = [50]*len(speed_kmph), marker = '+', color = 'r', label = 'data')
-    plt.xlabel(r'$distance$ / km')
-    plt.ylabel(r'$speed$ / km/h')
-    plt.title(f'Part 1b: Consumption data: {name}')
-    plt.savefig(fname=f'plot 1b_{(name.split("_")[1]).split(".")[0]}')
-    plt.legend()
-    plt.show()
-    #plt.close()
-    #plt.cla()
-Graph("speed_anna.npz")
-Graph("speed_elsa.npz")
+print(time_to_destination(30, 'speed_anna.npz', n = 10)*3600)
+print(timekonverter(212223))
+print(timekonverter( time_to_destination(30, 'speed_anna.npz', n = 10)*3600))
