@@ -13,7 +13,7 @@ def plot(name, n = 10000):
     plt.xlabel(r'$distance$ / km')
     plt.ylabel(r'$speed$ / km/h')
     plt.title(f'Part 1b: Consumption data: {name}')
-    plt.savefig(fname='plot 1b')
+    plt.savefig(fname=f'plot 1b_{(name.split("_")[1]).split(".")[0]}')
     plt.legend()
     plt.show()
     #plt.close()
