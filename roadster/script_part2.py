@@ -74,9 +74,6 @@ for route in Routes:
     Error = [abs(time[i]-time[i+1]) for i in range(len(time)-1)]
     plt.loglog(N[:-1], Error, label = f'Error: {route.split("_")[1].split(".")[0]}')
 
-
-
-
 Power = [1, 2, 3]
 for p in Power:
     Y = []
@@ -84,8 +81,6 @@ for p in Power:
         Y.append(1/x**p)
     plt.loglog(N[:-1], Y, label = rf'$O(1/(n^{p}$)')    
                 
-
-#plt.loglog(N, N1)
 plt.xlabel(r'$n$')
 plt.ylabel('Error')
 plt.legend()
