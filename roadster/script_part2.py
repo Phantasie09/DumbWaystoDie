@@ -67,7 +67,7 @@ if __name__ == '__main__':
 x = 65
 route = elsa
 Routes = [anna, elsa]
-N = [2**n for n in range(12, 25)]
+N = [2**n for n in range(10, 25)]
 
 for route in Routes:
     time = [time_to_destination(x, route, n) for n in N]
