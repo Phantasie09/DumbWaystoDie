@@ -74,10 +74,12 @@ def total_consumption(x, route, n):
 
 ### PART 3A ###
 def distance(T, route): 
-    position =np.linspace(0, x, n+1)
-    def _distance(T,route):
-        pass
-    # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
+# =============================================================================
+#     position =np.linspace(0, x, n+1)
+#     def _distance(T,route):
+#         pass
+#     # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
+# =============================================================================
     raise NotImplementedError('distance not implemented yet!')
 
 ### PART 3B ###

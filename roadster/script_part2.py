@@ -51,6 +51,7 @@ def call(name,n,x):
     fuel=(total_consumption(x, name, n) )
     print(fuel)
     return zeit,fuel
+
 def main():
     fueldata=[]
     n=10
@@ -74,7 +75,7 @@ for route in Routes:
     Error = [abs(time[i]-time[i+1]) for i in range(len(time)-1)]
     plt.loglog(N[:-1], Error, label = f'Error: {route.split("_")[1].split(".")[0]}')
 
-Power = [1, 2, 3]
+Power = [1, 2, 3, 4]
 for p in Power:
     Y = []
     for x in N[:-1]:

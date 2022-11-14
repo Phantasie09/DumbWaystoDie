@@ -1,19 +1,24 @@
-def timekonverter(x): #WIth Inspiration of Concept INput in Sec
-    if x // (365.2425*24*3600) < 1: # year
-        if x//(24 * 3600)>1: #day
-            days = x // (24 * 3600)
-            hours = (x % (24 * 3600))/3600
-            return [int(days),"days",int(hours),"hours"]
-        else:
-            if x // 3600 < 1:  # day
-                sec=x % 60
-                min= x // 60
-                return[int(min),"min",int(sec),"seconds"]
-            else:
-                hours = x // 3600
-                min = (x % 3600)/60
-                return [int(hours), "hours", int(min), "min"]
-    else:
-        days= (x % (365.2425*24*3600))/(24*3600)
-        years=x // (365.2425*24*3600)
-        return [int(years),"years",int(days),"days"]
+
+import numpy as np
+from roadster.roadster import *
+
+
+### PART 3B ###
+def reach(C, route):
+    x = 1
+    n = 1000
+    def f(x):
+        return C - total_consumption(x, route, n)
+    def fdx(x):
+        return consumption(velocity(x, route))
+    print(f(x), fdx(x))
+    while abs(f(x)) > 10e-4 and x < max(load_route(route)[0]):
+        x = x - f(x)/fdx(x)
+        print(x)
+    return x
+    # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
+    raise NotImplementedError('reach not implemented yet!')
+
+print(reach(100000, 'speed_anna'))
+    
+    
