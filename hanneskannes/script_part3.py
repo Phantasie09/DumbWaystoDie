@@ -19,7 +19,7 @@ def distance(T, route):
     def _distance(T,min,max):
         ttt = time_to_destination(min+(max -min)/2, route, 1000)
         if 0<=T-ttt<=10**(-4):
-            print(T - ttt)
+            print("Timediff:",T - ttt)
             return (min+(max -min)/2)
 
         elif ttt < T:
