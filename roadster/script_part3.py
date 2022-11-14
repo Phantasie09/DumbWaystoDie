@@ -36,7 +36,7 @@ def distance(T, route):
     return _distance(T,0 , max(strecke))
 
 
-
+#d
 
 def main():
     print(distance(0.05,anna))
