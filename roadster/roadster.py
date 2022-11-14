@@ -57,15 +57,21 @@ def velocity(x, route):
 
 ### PART 2A ###
 def time_to_destination(x, route, n):
-    # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
-    raise NotImplementedError('time_to_destination not implemented yet!')
+    h = x/n
+    position = np.linspace(0, x, n+1)
+    speed = 1/velocity(position, route)
+    #t = trapezoid(speed,position)
+    return h*(np.sum(speed) - (speed[0] + speed[-1])/2)
+
 
 ### PART 2B ###
 def total_consumption(x, route, n):
-    v = velocity(x, route)
-    
-    # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
-    raise NotImplementedError('total_consumption not implemented yet!')
+    h = x/n
+    position = np.linspace(0, x, n+1)
+    mjamjam  = consumption(velocity(position, route))
+    #t = trapezoid(mjamjam ,position)
+    return h*(np.sum(mjamjam ) - (mjamjam [0] + mjamjam [-1])/2)
+
 
 ### PART 3A ###
 def distance(T, route): 
