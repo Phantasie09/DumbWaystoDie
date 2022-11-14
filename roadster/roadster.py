@@ -37,7 +37,6 @@ def consumption(v):
     a3 = 0.2584
     a4 = 0.008210
     return a1/v+a2+a3*v+a4*v**2
-    raise NotImplementedError('consumption not implemented yet!')
 
 ### PART 1B ###
 def velocity(x, route):
@@ -75,6 +74,9 @@ def total_consumption(x, route, n):
 
 ### PART 3A ###
 def distance(T, route): 
+    position =np.linspace(0, x, n+1)
+    def _distance(T,route):
+        pass
     # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
     raise NotImplementedError('distance not implemented yet!')
 
