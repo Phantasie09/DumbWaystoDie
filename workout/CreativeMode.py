@@ -1,5 +1,5 @@
 import numpy as np
-from roadster import *
+from projekte import *
 import matplotlib.pyplot as plt
 from scipy.integrate import trapezoid
 import math
