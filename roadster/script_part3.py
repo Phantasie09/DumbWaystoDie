@@ -6,97 +6,48 @@ from scipy.integrate import trapezoid
 elsa = 'speed_elsa.npz'
 anna = 'speed_anna.npz'
 
-
-def distance(T,route):
-    pass
-
-
-
-def time_to_destination(x, route, n):
-    h = x / n
-    position = np.linspace(0, x, n + 1)
-    speed = 1 / velocity(position, route)
-    t = trapezoid(speed, position)
-    return h * (np.sum(speed) - (speed[0] + speed[-1]) / 2)
+def time_to_destination (x , route , n ):
+    h = x/n
+    position = np.linspace(0, x, n+1)
+    speed = 1/velocity(position, route)
+    t = trapezoid(speed,position)
+    return h*(np.sum(speed) - (speed[0] + speed[-1])/2)
 
 
-def total_consumption(x, route, n):
-    h = x / n
-    position = np.linspace(0, x, n + 1)
-    mjamjam = consumption(velocity(position, route))
-    t = trapezoid(mjamjam, position)
-    return h * (np.sum(mjamjam) - (mjamjam[0] + mjamjam[-1]) / 2)
-
-
-def timekonverter(x):  # WIth Inspiration of Concept INput in Sec
-    if x // (365.2425 * 24 * 3600) < 1:  # year
-        if x // (24 * 3600) > 1:  # day
-            days = x // (24 * 3600)
-            hours = (x % (24 * 3600)) / 3600
-            return [int(days), "days", int(hours), "hours"]
+def distance(T, route):
+    strecke = load_route(route)[0]
+    def _distance(T,min,max):
+        ttt = time_to_destination(min+(max -min)/2, route, 1000)
+        if 0<=T-ttt<=10**(-4):
+            print("sucsess")
+            print(min+(max -min)/2)
+            return (min+(max -min)/2)
+        elif ttt < T:
+            _distance(T,min+(max -min)/2,max)
         else:
-            if x // 3600 < 1:  # day
-                sec = x % 60
-                min = x // 60
-                return [int(min), "min", int(sec), "seconds"]
-            else:
-                hours = x // 3600
-                min = (x % 3600) / 60
-                return [int(hours), "hours", int(min), "min"]
-    else:
-        days = (x % (365.2425 * 24 * 3600)) / (24 * 3600)
-        years = x // (365.2425 * 24 * 3600)
-        return [int(years), "years", int(days), "days"]
+            _distance(T,min,max-(max -min)/2 )
+        print(ttt,min,max)
+
+    if time_to_destination(max(strecke), route, 1000)<T:
+        print("Stop",time_to_destination(max(strecke), route, 1000))
+        return "out of border"
 
 
-def call(name, n, x):
-    user = (name.split("_")[1]).split(".")[0]
-    print("User: " + user + ", Numerations: " + str(n), ", Distance:" + str(x))
-    print("time:")
-    zeit = time_to_destination(x, name, n) * 3600
-    print(*timekonverter(zeit))
-    print("Fuel:")
-    fuel = (total_consumption(x, name, n))
-    print(fuel)
-    return zeit, fuel
+    return _distance(T,0 , max(strecke))
+
+
 
 
 def main():
-    fueldata = []
-    n = 10
-    for y in [50]:
-        for i in range(1, 11):
-            fueldata.append(call(anna, n * i, y)[0])
-    print(fueldata)
+    print(distance(0.05,anna))
 
 
 if __name__ == '__main__':
     main()
 
-# 2c
 
-x = 65
-route = elsa
-Routes = [anna, elsa]
-N = [2 ** n for n in range(10, 25)]
 
-for route in Routes:
-    time = [time_to_destination(x, route, n) for n in N]
-    Error = [abs(time[i] - time[i + 1]) for i in range(len(time) - 1)]
-    plt.loglog(N[:-1], Error, label=f'Error: {route.split("_")[1].split(".")[0]}')
 
-Power = [1, 2, 3]
-for p in Power:
-    Y = []
-    for x in N[:-1]:
-        Y.append(1 / x ** p)
-    plt.loglog(N[:-1], Y, label=rf'$O(1/(n^{p}$)')
-
-plt.xlabel(r'$n$')
-plt.ylabel('Error')
-plt.legend()
-plt.title('2(c) Convergence study:')
-plt.grid(which="both")
 
 
 
