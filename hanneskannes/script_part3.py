@@ -34,11 +34,40 @@ def distance(T, route):
         return _distance(T,0 , max(strecke))
 
 
+def total_consumption (x , route , n ):
+    h = x/n
+    position = np.linspace(0, x, n+1)
+    mjamjam  = consumption(velocity(position, route))
+    t = trapezoid(mjamjam ,position)
+    return h*(np.sum(mjamjam ) - (mjamjam [0] + mjamjam [-1])/2)
+
+def reach(C, route,n=1000):
+    strecke = load_route(route)[0]
+    def _reach(x):
+        leakage=total_consumption(x, route, n)
+        if 0<leakage-C< 10**(-4):
+            print("Succes:",leakage)
+            return x
+        else:
+            return _reach(x-(leakage-C)/consumption(velocity(x, route)))
+
+    if total_consumption(max(strecke),route,n)<C:
+        print("Stop",total_consumption(max(strecke), route, 1000))
+        return "out of border"
+    else:
+        return _reach(0)
+
+
+
+
+
+
+
 
 
 def main():
-    print(distance(0.5,anna))
-
+    #print(distance(0.5,anna))
+    print(reach(10000, 'speed_anna'))
 
 if __name__ == '__main__':
     main()
