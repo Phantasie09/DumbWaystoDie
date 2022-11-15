@@ -73,7 +73,7 @@ N = [2**n for n in range(10, 25)]
 for route in Routes:
     time = [time_to_destination(x, route, n) for n in N]
     Error = [abs(time[i]-time[i+1]) for i in range(len(time)-1)]
-    plt.loglog(N[:-1], Error, label = f'Error: {route.split("_")[1].split(".")[0]}')
+    plt.loglog(N[:-1], Error, linestyle='-', marker='x', label = f'Error: {route.split("_")[1].split(".")[0]}')
 
 Power = [1, 2, 3, 4]
 for p in Power:
