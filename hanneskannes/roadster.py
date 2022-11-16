@@ -76,10 +76,40 @@ def total_consumption(x, route, n):
 
 ### PART 3A ###
 def distance(T, route):
-   pass
+    strecke = load_route(route)[0]
+    def _distance(T,min,max):
+        ttt = time_to_destination(min+(max -min)/2, route, 1000)
+        if 0<=T-ttt<=10**(-4):
+            print("Timediff:",T - ttt)
+            return (min+(max -min)/2)
+
+        elif ttt < T:
+            return _distance(T,min+(max -min)/2,max)
+        else:
+            return _distance(T,min,max-(max -min)/2 )
+
+    if time_to_destination(max(strecke), route, 1000)<T:
+        print("Stop",time_to_destination(max(strecke), route, 1000))
+        return "out of border"
+    else:
+        return _distance(T,0 , max(strecke))
+
 
 
 ### PART 3B ###
-def reach(C, route):
-    # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
-    raise NotImplementedError('reach not implemented yet!')
+def reach(C, route, n = 1000):
+    strecke = load_route(route)[0]
+    def _reach(x):
+        leakage=total_consumption(x, route, n)
+        if 0<leakage-C< 10**(-4):
+            print("Succes:",leakage)
+            return x
+        else:
+            return _reach(x-(leakage-C)/consumption(velocity(x, route)))
+
+    if total_consumption(max(strecke),route,n)<C:
+        print("Stop",total_consumption(max(strecke), route, 1000))
+        return "out of border"
+    else:
+        return _reach(0)
+    
