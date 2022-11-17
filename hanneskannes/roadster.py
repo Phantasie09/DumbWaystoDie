@@ -75,11 +75,11 @@ def total_consumption(x, route, n):
 
 
 ### PART 3A ###
-def distance(T, route):
+def distance(T, route,n=10**7):
     strecke = load_route(route)[0]
     def _distance(T,min,max):
-        ttt = time_to_destination(min+(max -min)/2, route, 1000)
-        if 0<=T-ttt<=10**(-4):
+        ttt = time_to_destination(min+(max -min)/2, route, n)
+        if 0<=T-ttt<=10**(-10):
             print("Timediff:",T - ttt)
             return (min+(max -min)/2)
 
@@ -89,7 +89,7 @@ def distance(T, route):
             return _distance(T,min,max-(max -min)/2 )
 
     if time_to_destination(max(strecke), route, 1000)<T:
-        print("Stop",time_to_destination(max(strecke), route, 1000))
+        print("Stop",time_to_destination(max(strecke), route, n))
         return "out of border"
     else:
         return _distance(T,0 , max(strecke))
@@ -97,18 +97,18 @@ def distance(T, route):
 
 
 ### PART 3B ###
-def reach(C, route, n = 1000):
+def reach(C, route, n = 10**7):
     strecke = load_route(route)[0]
     def _reach(x):
         leakage=total_consumption(x, route, n)
-        if 0<leakage-C< 10**(-4):
+        if 0<leakage-C< 10**(-10):
             print("Succes:",leakage)
             return x
         else:
             return _reach(x-(leakage-C)/consumption(velocity(x, route)))
 
     if total_consumption(max(strecke),route,n)<C:
-        print("Stop",total_consumption(max(strecke), route, 1000))
+        print("Stop",total_consumption(max(strecke), route, n))
         return "out of border"
     else:
         return _reach(0)
