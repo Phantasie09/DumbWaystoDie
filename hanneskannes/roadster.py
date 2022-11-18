@@ -90,7 +90,7 @@ def distance(T, route,n=10**7):
 
     if time_to_destination(max(strecke), route, 1000)<T:
         print("Stop",time_to_destination(max(strecke), route, n))
-        return "out of border"
+        return max(strecke)
     else:
         return _distance(T,0 , max(strecke))
 
@@ -109,7 +109,7 @@ def reach(C, route, n = 10**7):
 
     if total_consumption(max(strecke),route,n)<C:
         print("Stop",total_consumption(max(strecke), route, n))
-        return "out of border"
+        return max(strecke)
     else:
         return _reach(0)
     
