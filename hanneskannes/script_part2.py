@@ -119,7 +119,7 @@ for p in Power:
 plt.xlabel(r'$n$')
 plt.ylabel('Error')
 plt.legend()
-plt.title('2(c) Convergence study:')
+plt.title('2(c) Convergence study: time_to_destination')
 plt.grid(which="both")
     
  
