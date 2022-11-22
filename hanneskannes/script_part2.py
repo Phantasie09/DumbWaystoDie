@@ -52,8 +52,8 @@ def total_consumption (x , route , n ):
 # plt.ylabel('E / kWh')
 # plt.legend()
 # plt.title('2b: Total electricity consumption')
+# 
 # =============================================================================
-
 
 def timekonverter(x): #WIth Inspiration of Concept INput in Sec
     if x // (365.2425*24*3600) < 1: # year
@@ -101,13 +101,11 @@ def timekonverter(x): #WIth Inspiration of Concept INput in Sec
     
 # 2c
 
-x = 65
-route = elsa
 Routes = [anna, elsa]
 N = [2**n for n in range(10, 25)]
 
 for route in Routes:
-    time = [time_to_destination(x, route, n) for n in N]
+    time = [time_to_destination(load_route(route)[0][-1], route, n) for n in N]
     Error = [abs(time[i]-time[i+1]) for i in range(len(time)-1)]
     plt.loglog(N[:-1], Error, linestyle='-', marker='x', label = f'Error: {route.split("_")[1].split(".")[0]}')
 
