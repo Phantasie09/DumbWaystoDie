@@ -101,26 +101,28 @@ def timekonverter(x): #WIth Inspiration of Concept INput in Sec
     
 # 2c
 
-Routes = [anna, elsa]
-N = [2**n for n in range(10, 25)]
-
-for route in Routes:
-    time = [time_to_destination(load_route(route)[0][-1], route, n) for n in N]
-    Error = [abs(time[i]-time[i+1]) for i in range(len(time)-1)]
-    plt.loglog(N[:-1], Error, linestyle='-', marker='x', label = f'Error: {route.split("_")[1].split(".")[0]}')
-
-Power = [1, 2, 3, 4]
-for p in Power:
-    Y = []
-    for x in N[:-1]:
-        Y.append(1/x**p)
-    plt.loglog(N[:-1], Y, label = rf'$O(1/(n^{p}$)')    
-                
-plt.xlabel(r'$n$')
-plt.ylabel('Error')
-plt.legend()
-plt.title('2(c) Convergence study: time_to_destination')
-plt.grid(which="both")
+# =============================================================================
+# Routes = [anna, elsa]
+# N = [2**n for n in range(10, 25)]
+# 
+# for route in Routes:
+#     time = [time_to_destination(load_route(route)[0][-1], route, n) for n in N]
+#     Error = [abs(time[i]-time[i+1]) for i in range(len(time)-1)]
+#     plt.loglog(N[:-1], Error, linestyle='-', marker='x', label = f'Error: {route.split("_")[1].split(".")[0]}')
+# 
+# Power = [1, 2, 3, 4]
+# for p in Power:
+#     Y = []
+#     for x in N[:-1]:
+#         Y.append(1/x**p)
+#     plt.loglog(N[:-1], Y, label = rf'$O(1/(n^{p}$)')    
+#                 
+# plt.xlabel(r'$n$')
+# plt.ylabel('Error')
+# plt.legend()
+# plt.title('2(c) Convergence study: time_to_destination')
+# plt.grid(which="both")
+# =============================================================================
     
  
     
