@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 
 
 def f(x):
-    return np.sin(x)
+    return np.sin(x)*np.sin(x*0.2)
 
-xmin, xmax = 0, 8
-n = 2
+xmin, xmax = 0, 15
+n = 4
 
 
 X = list(np.linspace(xmin, xmax, n*2+1))
