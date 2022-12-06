@@ -1,12 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+import math
 
 def f(x):
-    return np.sin(x)*np.sin(x*0.2)
+    return np.sin(x)
 
-xmin, xmax = 0, 15
-n = 4
+xmin, xmax = 0, 7
+n = 5
 
 
 X = list(np.linspace(xmin, xmax, n*2+1))
@@ -31,7 +31,7 @@ def draw(X, Y):
 print(X)
 
 draw(X, Y)
-x = np.arange(xmin, xmax, 0.1)
+x = np.arange(xmin, xmax, 0.001)
 plt.plot(x, f(x), '--')
 plt.plot(X, Y, marker = 'o', ls = '')
 

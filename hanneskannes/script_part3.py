@@ -32,6 +32,8 @@ def distance(T, route):
         return "out of border"
     else:
         return _distance(T,0 , max(strecke))
+    
+
 
 
 def total_consumption (x , route , n ):
