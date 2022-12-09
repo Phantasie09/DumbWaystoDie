@@ -78,4 +78,3 @@ def nuke_route_marie(t0,h,end=60):
 
 
 
-print(nuke_route_marie(9.5,1/600)[0][-1])
