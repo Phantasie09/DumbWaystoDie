@@ -48,3 +48,34 @@ def nyc_route_traveler_tim ( t0 , h ):
             speed_kmph.append(speed)
             return np.array(time_h),np.array(distance_km),np.array(speed_kmph)
     return help_me(0,t0)
+def nuke_route_marie(t0,h,end=60):
+    assert 0 <= t0 <= 24, "out of Range"  # In Hours
+    time_h, distance_km, speed_kmph = [], [], []
+    y=0
+    actT=t0
+
+    while y< end:
+        speed = route_nyc(actT, y)[0][0]
+        #
+        time_h.append(actT)
+        distance_km.append(y)
+        speed_kmph.append(speed)
+        #
+        actT=actT + h
+        y=y + h * speed
+        #
+
+    last_step = (60 - y) / speed
+    time = actT + last_step
+    time_h.append(time)
+    distance_km.append(60)
+    speed_kmph.append(speed)
+    return np.array(time_h), np.array(distance_km), np.array(speed_kmph)
+
+
+
+
+
+
+
+print(nuke_route_marie(9.5,1/600)[0][-1])
