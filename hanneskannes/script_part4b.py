@@ -4,10 +4,13 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from route_nyc import *
 
+time = [4, 9.5]
 
 
-Steven, Marie, Gabin=nyc_route_traveler_euler(9.5,1/600)
-Ammelie, Baum, Fisch=nyc_route_traveler_euler(4,1/600)
+# =============================================================================
+# Steven, Marie, Gabin = nyc_route_traveler_euler(9.5,1/600)
+# Ammelie, Baum, Fisch = nyc_route_traveler_euler(4,1/600)
+# =============================================================================
 ### Given contour plot ###
 n_fine = 100
 t_fine = np.linspace(0, 24, n_fine)
@@ -20,8 +23,15 @@ fig = plt.figure(figsize=(w, h))
 
 plt.axes().set_aspect(0.2, adjustable='box')
 cs = plt.contourf(tt_fine,xx_fine,zz_fine, 50, cmap=cm.get_cmap('jet'))
-plt.plot(Steven, Marie, ls = '-', linewidth = 3, color = 'k', label ='help')
-plt.plot(Ammelie, Baum, ls = '-', linewidth = 3, color = 'grey', label ='help')
+
+for t in time:
+    time_h , distance_km , speed_kmph = nyc_route_traveler_euler(t , 1/600)
+    plt.plot(time_h , distance_km , ls = '-', linewidth = 3, color = 'k', label ='help')
+    
+# =============================================================================
+# plt.plot(Steven, Marie, ls = '-', linewidth = 3, color = 'k', label ='help')
+# plt.plot(Ammelie, Baum, ls = '-', linewidth = 3, color = 'grey', label ='help')
+# =============================================================================
 plt.xlabel('Time [hour of day]',fontsize=18)
 plt.ylabel('Distance [km]',fontsize=18)
 plt.title('Speed [km/h]',fontsize=18)
