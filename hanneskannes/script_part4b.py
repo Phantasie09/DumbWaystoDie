@@ -26,8 +26,8 @@ for i, t in enumerate(time):
     
 plt.xlabel('Time [hour of day]',fontsize=18)
 plt.ylabel('Distance [km]',fontsize=18)
-plt.title('Speed [km/h]',fontsize=18)
-fig.colorbar(cs)
+plt.title('4b',fontsize=18)
+fig.colorbar(cs, label = 'speed [km/h]')
 plt.legend()
 plt.savefig("speed-data-nyc.eps", bbox_inches='tight')
 plt.show()
