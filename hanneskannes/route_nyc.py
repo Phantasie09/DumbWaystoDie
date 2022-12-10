@@ -31,23 +31,24 @@ def nyc_route_traveler_euler(t0,h, end = 60):
     time_h, distance_km, speed_kmph = [], [], []
     y=0
     actT=t0
-
-    while y < end:
+    while True:
         speed = route_nyc(actT, y)[0][0]
         #
         time_h.append(actT)
         distance_km.append(y)
         speed_kmph.append(speed)
         #
-        actT=actT + h
-        y=y + h * speed
-        #
+        y1 = y + h * speed
+        if y1>end:
+            break
+        else:
+            actT = actT + h
+            y=y1
 
     last_step = (60 - y) / speed
     time = actT + last_step
     time_h.append(time)
     distance_km.append(60)
-    speed_kmph.append(speed)
+    speed_kmph.append(route_nyc(time,60))
     return np.array(time_h), np.array(distance_km), np.array(speed_kmph)
-    return (t0,h)
 
