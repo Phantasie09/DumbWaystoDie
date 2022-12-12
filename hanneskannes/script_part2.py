@@ -14,18 +14,20 @@ def time_to_destination (x , route , n ):
     t = trapezoid(speed,position)
     return h*(np.sum(speed) - (speed[0] + speed[-1])/2)
 
-names = [elsa, anna]
-N = np.arange(50, 6000, 10)
-
-for name in names: 
-    time = [time_to_destination(load_route(name)[0][-1], name, n)*60 for n in N]
-    print(name, time_to_destination(load_route(name)[0][-1], name, 2000)*60, 'min')
-    plt.plot(N, time, label = name)
-    
-plt.xlabel('n / 1')
-plt.ylabel('t / min')
-plt.legend()
-plt.title('2a: Arrival time')
+# =============================================================================
+# names = [elsa, anna]
+# N = np.arange(50, 6000, 10)
+# 
+# for name in names: 
+#     time = [time_to_destination(load_route(name)[0][-1], name, n)*60 for n in N]
+#     print(name, time_to_destination(load_route(name)[0][-1], name, 2000)*60, 'min')
+#     plt.plot(N, time, label = name)
+#     
+# plt.xlabel('n / 1')
+# plt.ylabel('t / min')
+# plt.legend()
+# plt.title('2a: Arrival time')
+# =============================================================================
 
 
 #2b
@@ -50,28 +52,30 @@ def total_consumption (x , route , n ):
 # plt.ylabel('E / kWh')
 # plt.legend()
 # plt.title('2b: Total electricity consumption')
-# 
 # =============================================================================
 
-def timekonverter(x): #WIth Inspiration of Concept INput in Sec
-    if x // (365.2425*24*3600) < 1: # year
-        if x//(24 * 3600)>1: #day
-            days = x // (24 * 3600)
-            hours = (x % (24 * 3600))/3600
-            return [int(days),"days",int(hours),"hours"]
-        else:
-            if x // 3600 < 1:  # day
-                sec=x % 60
-                min= x // 60
-                return[int(min),"min",int(sec),"seconds"]
-            else:
-                hours = x // 3600
-                min = (x % 3600)/60
-                return [int(hours), "hours", int(min), "min"]
-    else:
-        days= (x % (365.2425*24*3600))/(24*3600)
-        years=x // (365.2425*24*3600)
-        return [int(years),"years",int(days),"days"]
+
+# =============================================================================
+# def timekonverter(x): #WIth Inspiration of Concept INput in Sec
+#     if x // (365.2425*24*3600) < 1: # year
+#         if x//(24 * 3600)>1: #day
+#             days = x // (24 * 3600)
+#             hours = (x % (24 * 3600))/3600
+#             return [int(days),"days",int(hours),"hours"]
+#         else:
+#             if x // 3600 < 1:  # day
+#                 sec=x % 60
+#                 min= x // 60
+#                 return[int(min),"min",int(sec),"seconds"]
+#             else:
+#                 hours = x // 3600
+#                 min = (x % 3600)/60
+#                 return [int(hours), "hours", int(min), "min"]
+#     else:
+#         days= (x % (365.2425*24*3600))/(24*3600)
+#         years=x // (365.2425*24*3600)
+#         return [int(years),"years",int(days),"days"]
+# =============================================================================
 
 # =============================================================================
 # def call(name,n,x):
@@ -99,28 +103,26 @@ def timekonverter(x): #WIth Inspiration of Concept INput in Sec
     
 # 2c
 
-# =============================================================================
-# Routes = [anna, elsa]
-# N = [2**n for n in range(10, 25)]
-# 
-# for route in Routes:
-#     time = [time_to_destination(load_route(route)[0][-1], route, n) for n in N]
-#     Error = [abs(time[i]-time[i+1]) for i in range(len(time)-1)]
-#     plt.loglog(N[:-1], Error, linestyle='-', marker='x', label = f'Error: {route.split("_")[1].split(".")[0]}')
-# 
-# Power = [1, 2, 3, 4]
-# for p in Power:
-#     Y = []
-#     for x in N[:-1]:
-#         Y.append(1/x**p)
-#     plt.loglog(N[:-1], Y, label = rf'$O(1/(n^{p}$)')    
-#                 
-# plt.xlabel(r'$n$')
-# plt.ylabel('Error')
-# plt.legend()
-# plt.title('2(c) Convergence study: time_to_destination')
-# plt.grid(which="both")
-# =============================================================================
+Routes = [anna, elsa]
+N = [2**n for n in range(10, 25)]
+
+for route in Routes:
+    time = [time_to_destination(load_route(route)[0][-1], route, n) for n in N]
+    Error = [abs(time[i]-time[i+1]) for i in range(len(time)-1)]
+    plt.loglog(N[:-1], Error, linestyle='-', marker='x', label = f'Error: {route.split("_")[1].split(".")[0]}')
+
+Power = [1, 2, 3, 4]
+for p in Power:
+    Y = []
+    for x in N[:-1]:
+        Y.append(1/x**p)
+    plt.loglog(N[:-1], Y, label = rf'$O(1/(n^{p}$)')    
+                
+plt.xlabel(r'$n$')
+plt.ylabel('Error')
+plt.legend()
+plt.title('2(c) Convergence study: time_to_destination')
+plt.grid(which="both")
     
  
     
