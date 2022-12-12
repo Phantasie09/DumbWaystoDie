@@ -217,6 +217,7 @@ def test_part4a_D():
     h = 0.5
     time_h, distance_km, speed_kmph = route_nyc.nyc_route_traveler_euler(t0,h)
     # last value in time_h
+
     ref_value_time_m1 = 10.003611662684603445
     assert np.isclose(ref_value_time_m1,time_h[-1]), 'last value in time_h vector different from reference value'    
     # next to last value in distance_km
@@ -226,6 +227,7 @@ def test_part4a_D():
     ref_value_speed_0 = 8.2800000000000011369
     assert np.isclose(ref_value_speed_0,speed_kmph[0]), 'first value in speed_kmph vector different from reference value'    
     # check last value in speed_kmph
+
     ref_value_speed_m1 = 34.824801684943381019
     assert np.isclose(ref_value_speed_m1,speed_kmph[-1]), 'last value in speed_kmph vector different from reference value'
 
